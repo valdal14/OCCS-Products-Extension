@@ -1,0 +1,29 @@
+{
+  "name": "occs-products-extension",
+  "version": "1.0.0",
+  "description": "OCCS Extension that allows the user to rapidly add products in the shopping cart",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine",
+    "start": "./node_modules/.bin/nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valdal14/OCCS-Products-Extension.git"
+  },
+  "author": "@valdal14",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valdal14/OCCS-Products-Extension/issues"
+  },
+  "homepage": "https://github.com/valdal14/OCCS-Products-Extension#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "node-fetch": "^2.1.1"
+  },
+  "devDependencies": {
+    "jasmine": "3.1.0",
+    "nodemon": "1.17.2"
+  }
+}
