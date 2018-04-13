@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+require('dotenv').config()
 
 class OCCS {
     constructor(url, username, password, categoryId){
@@ -43,7 +44,7 @@ class OCCS {
     getProduct(req, res){
         return new Promise((resolve, reject)=>{
 
-            fetch(this.url + this.endpointProducts + `?catalogId=${this.categoryId}&limit=3`, {
+            fetch(this.url + this.endpointProducts + `?catalogId=${this.categoryId}&limit=6`, {
                 method: 'GET',
                 headers: {
                     Authorization: 'Bearer ' + this.token
@@ -79,7 +80,7 @@ class OCCS {
                     this.products.push({
                         id: arrayOfProducts[p][i].id,
                         name: arrayOfProducts[p][i].displayName,
-                        image: arrayOfProducts[p][i].fullImageURLs[0],
+                        image: arrayOfProducts[p][i].primaryMediumImageURL,
                         price: arrayOfProducts[p][i].listPrice
                     });
                 }
@@ -88,8 +89,7 @@ class OCCS {
     }
 }
 
-
-let occs = new OCCS('https://ucf4-occ0011-occ.oracledemos.com','valerio.dalessio@oracle.com', 'valdal14', 'supremoCoffee');
+let occs = new OCCS(process.env.OCCSURL, process.env.USER, process.env.PWD, process.env.CATEGORY);
 
 module.exports.Occs = occs;
 

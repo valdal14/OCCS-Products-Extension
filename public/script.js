@@ -9,31 +9,34 @@ function getProducts(url){
         return response.json();
     })
     .then(products =>{
-        console.log('I am here');
         for(var p in products){
             console.log(products[p]);
-            $('.row').append(`
-                <div class="product col-md-3">
-                    <div class="flexContainer">
-                        <div class="urlImages">
-                            <img src="${OCCSURL+products[p].image}" alt="${products[p].name}">
-                        </div>
-                        <div class="productText">
-                            <span class="name">${products[p].name}</span>
-                            <br>
-                            <br>
-                            <span class="price">${products[p].price}</span>
-                        </div>
-                    </div>
-                    <div class="buyNow">
-                        <button class="btn btn-primary btn-lg">BUY NOW</button>
-                    <div>
+            $('.site').append(`
+            <div class="container">
+                <div class="productDetails">
+                    <span class="title">
+                        ${products[p].name}
+                    </span>
+                    <span class="price">
+                        ${products[p].price}
+                    </span>
+                    <hr> 
                 </div>
+
+                <div class="picture">
+                    <img src="${OCCSURL+products[p].image}" alt="${products[p].name}">
+                    <hr>
+                </div>
+
+                <div class="action">
+                    <button type="button" class="btn btn-primary btn-lg">BUY NOW</button>
+                </div>
+            </div>
             `);
         }
     })
     .catch(error =>{
-
+        //handle errors
     })
 }
 
