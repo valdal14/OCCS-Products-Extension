@@ -1,5 +1,4 @@
 const OCCSURL = "https://ucf4-occ0011-occ.oracledemos.com";
-
 function getProducts(url){
 
     fetch(url, {
@@ -18,7 +17,7 @@ function getProducts(url){
                         ${products[p].name}
                     </span>
                     <span class="price">
-                        ${products[p].price}
+                     € ${products[p].price}
                     </span>
                     <hr> 
                 </div>
@@ -29,7 +28,7 @@ function getProducts(url){
                 </div>
 
                 <div class="action">
-                    <button type="button" class="btn btn-primary btn-lg">BUY NOW</button>
+                    <button type="button" id="${products[p].id}" class="btn btn-primary btn-lg">BUY NOW</button>
                 </div>
             </div>
             `);
@@ -40,6 +39,11 @@ function getProducts(url){
     })
 }
 
+// delegate event
+$('.site').delegate("button", "click", function(e){
+    let product = $(this).attr("id");
+    window.open(`${OCCSURL}/product/${product}`, "_self");
+});
 
 
 
